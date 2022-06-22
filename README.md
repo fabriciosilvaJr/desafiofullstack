@@ -1,7 +1,7 @@
 # desafiofullstack login
 
 Aplicação com 3 paginas
-Login, Cadastro e Home
+(Login, Cadastro e Home)
 
 Como usar: 
 Após clonar projeto , acessar a pasta frontend
