@@ -1,0 +1,89 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3">{{pageTitle}} </h1>
+ </div>
+ <div class="row">
+    <!-- <div class="col-md-8 order-md-1"> -->
+    <div class="col order-md-1">
+   
+       <form [formGroup]="perfilForm" (submit)="submitForm()" >
+         <div class="form-row">
+            <div class="form-group col-md-3">
+               <label for="Codigo">Codigo</label>
+               <input type="text" class="form-control" id="Codigo" disabled="disabled" formControlName="CODIGO">
+            </div>
+
+            <div class="form-group col-md-6">
+               <label for="DESCRICAO">Descrição</label>
+               <input type="text" class="form-control" id="DESCRICAO"  formControlName="DESCRICAO">
+               <div class="text-danger" *ngIf="perfilForm.get('DESCRICAO').invalid && perfilForm.get('DESCRICAO').touched">
+                  <div *ngIf="perfilForm.get('DESCRICAO').errors.required"> dado obrigatório </div>
+                  <div *ngIf="perfilForm.get('DESCRICAO').errors.minlength"> deve ter no mínimo 2 caracteres </div>
+               </div>
+            </div>
+
+            <div class="form-group col-md-2">
+               <label for="DESCRICAO">Situação</label>
+               
+               <div style="margin-top: 8px;">               
+                  <div class="form-check-inline">
+                     <label class="form-check-label">
+                        <input type="radio" class="form-check-input" value="A" formControlName="SITUACAO">
+                        <span>Ativo</span>
+                     </label>
+                  </div>
+                  <div class="form-check-inline" >
+                     <label class="form-check-label">
+                        <input type="radio" class="form-check-input"  value="I" formControlName="SITUACAO">
+                        <span>Inativo</span>
+                     </label>
+                  </div>                  
+               </div>
+            </div>            
+            <div class="form-group col-md-1">
+               <label for="DESCRICAO">Permissão</label>
+               
+               <div style="margin-top: 8px;">               
+                  <div class="form-check-inline">
+                     <label class="form-check-label">
+                        <input type="radio" class="form-check-input" value="T" formControlName="PERFIL">
+                        <span>Todas</span>
+                     </label>
+                  </div>
+                            
+               </div>
+            </div>            
+
+         </div>
+
+         <div class="alert-danger mt-4" *ngIf="serverErrorMessages">
+            <strong>Erro no Servidor</strong>
+            <ul>
+               <li *ngFor="let error of serverErrorMessages">{{error}}</li>
+            </ul>
+         </div>
+
+         <!--
+         <a routerLink="/naturezas"  class="btn btn-danger float-right mt-3"> Cancelar</a> 
+         <button [disabled]="submittingForm || perfilForm.invalid" type="submit" class="btn btn-primary float-right mt-3 mr-2">Salvar</button>
+         -->
+
+
+         <div class="container">
+            <div class="row" style="margin-right: -20px; margin-left: -30px">
+              <div class="col-md-8">	  
+                
+              </div>
+              <div class="col-md-2" style="padding-right: 2px; padding-left: 2px">
+               <button [disabled]="submittingForm || perfilForm.invalid" type="submit" class="btn btn-success btn-sm btn-block float-right mt-3 mr-2">Salvar</button>
+              </div>
+              <div class="col-md-2" style="padding-right: 2px; padding-left: 2px">
+               <button routerLink="/perfis" type="button" class="btn btn-danger btn-sm btn-block float-right mt-3 mr-2">Cancelar</button>                  
+              </div>
+            </div>
+         </div>         
+      </form>
+
+
+    </div>
+ </div>
+ <!-- <pre>{{perfilForm.value | json}}</pre> -->

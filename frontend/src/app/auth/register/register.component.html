@@ -1,0 +1,97 @@
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Financeiro Web</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+<link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon.ico">
+<meta name="msapplication-config" content="https://getbootstrap.com/docs/4.5/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+  </head>
+  <body class="text-center">
+    <form [formGroup]="formRegister" (ngSubmit)="submitForm()"  class="form-signin">
+       
+       
+        <h1 class="h3 mb-3 font-weight-normal" style="margin-top: 30px;">Cadastro</h1>
+        <div class="form-group">
+          <label for="nome" class="sr-only">Nome </label>
+          <input type="text" formControlName="NOME"  name="nome"  id="nome" class="form-control"  placeholder="Nome">
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="sr-only">Email </label>
+          <input type="email" formControlName="EMAIL"  name="email"  id="email" class="form-control"  placeholder="Email">
+          <div class="text-danger" *ngIf="formRegister.get('EMAIL').invalid && formRegister.get('EMAIL').touched">
+            <div *ngIf="formRegister.get('EMAIL').errors.required"> Email é obrigatório </div>
+         
+         </div>
+        </div>
+
+        <div class="form-group">
+          
+          <label for="senha" class="sr-only">Senha</label>
+          <input type="password" formControlName="SENHA" name="senha"  id="senha" class="form-control"  placeholder="Senha" >
+          <div class="text-danger" *ngIf="formRegister.get('SENHA').invalid && formRegister.get('SENHA').touched">
+            <div *ngIf="formRegister.get('SENHA').errors.minlength"> deve ter no mínimo 6 digitos </div>
+        </div>
+
+        </div>
+        <div class="form-group">
+          <label for="confirmarSenha" class="sr-only">Confirme a senha: </label>
+          <input type="password" formControlName="confirmarSenha"   name="confirmarSenha"  id="confirmarSenha" class="form-control"  placeholder="Confirme a senha">
+          <div class="text-danger" *ngIf="formRegister.hasError('notSame') && formRegister.get('confirmarSenha').touched">
+            As senhas são diferentes
+         </div>
+
+        </div>
+
+       
+      
+        <div class="row">
+          <div class="col">
+            <a routerLink="/login"a href="#" class="stretched-link">Voltar</a>
+          </div>
+         
+        </div>
+        <br>
+        
+         <button class="btn btn-lg btn-primary btn-block" type="submit"  [disabled]="!formRegister.valid" >Cadastrar</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+      </form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+
+thead>tr>th {
+    cursor: pointer;
+}
+
+@media (max-width: 991px){
+    ul.p-tabview-nav li{
+      width: 100% !important;
+    }
+  
+    .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+      border-color: #efefef !important;
+      border-top-right-radius: 0px !important;
+      border-top-left-radius: 0px !important;
+    }
+  
+    .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+      background: #efefef !important;
+      font-weight: bold;
+    }
+  }
+
+.btn-disabled,
+.btn-disabled[disabled] {
+  opacity: .4;
+  cursor: default !important;
+  pointer-events: none;
+}
+

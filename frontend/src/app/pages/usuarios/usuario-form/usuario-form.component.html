@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3">{{pageTitle}} </h1>
+ </div>
+ <div class="row">
+    <!-- <div class="col-md-8 order-md-1"> -->
+    <div class="col order-md-1">
+   
+       <form [formGroup]="usuarioForm" (submit)="submitForm()" >
+         <div class="form-row">
+            <!-- <div class="form-group col-md-3">
+               <label for="Codigo">Codigo</label>
+               <input type="text" class="form-control" id="Codigo" disabled="disabled" formControlName="CODIGO">
+            </div> -->
+            <div class="form-group col-md-3">
+               <label for="PerfilId">Perfil</label>
+                <select name="NaturezaId" class="form-control" id="PerfilId " formControlName="COD_PERFIL_USUARIO">
+                   <option *ngFor="let perfil of perfis" [value]="perfil.CODIGO">
+                     {{perfil.DESCRICAO}}
+                   </option>
+                </select>
+             </div>  
+
+            <div class="form-group col-md-3">
+               <label for="NOME">Nome</label>
+               <input type="text" class="form-control" id="NOME"  formControlName="NOME">
+               <div class="text-danger" *ngIf="usuarioForm.get('NOME').invalid && usuarioForm.get('NOME').touched">
+                  <div *ngIf="usuarioForm.get('NOME').errors.required"> dado obrigatório </div>
+                  <div *ngIf="usuarioForm.get('NOME').errors.minlength"> deve ter no mínimo 2 caracteres </div>
+               </div>
+            </div>
+
+            <div class="form-group col-md-3">
+               <label for="EMAIL">E-mail</label>
+               <input type="text" class="form-control" id="EMAIL"  formControlName="EMAIL">
+               <div class="text-danger" *ngIf="usuarioForm.get('EMAIL').invalid && usuarioForm.get('EMAIL').touched">
+                  <div *ngIf="usuarioForm.get('EMAIL').errors.required"> Email é obrigatório </div>
+                  <div *ngIf="usuarioForm.get('EMAIL').hasError('emailInvalido')"> Email já cadastrado! </div>
+               </div>
+
+            </div>
+            <div *ngIf="usuarioForm.get('CODIGO').value  == null" class="form-group col-md-3" >
+               <label for="SENHA">Senha</label>
+               <input type="password" class="form-control" id="SENHA"  formControlName="SENHA">
+            
+            </div>
+
+                    
+
+         </div>
+
+         <div class="alert-danger mt-4" *ngIf="serverErrorMessages">
+            <strong>Erro no Servidor</strong>
+            <ul>
+               <li *ngFor="let error of serverErrorMessages">{{error}}</li>
+            </ul>
+         </div>
+
+        
+         <div class="container">
+            <div class="row" style="margin-right: -20px; margin-left: -30px">
+              <div class="col-md-8">	  
+                
+              </div>
+              <div class="col-md-2"  *ngIf="usuarioForm.get('CODIGO').value == null"   style="padding-right: 2px; padding-left: 2px">
+               <button [disabled]="submittingForm || usuarioForm.invalid" type="submit" class="btn btn-success btn-sm btn-block float-right mt-3 mr-2">Salvar</button>
+              </div>
+              <div class="col-md-2" *ngIf="usuarioForm.get('CODIGO').value != null" style="padding-right: 2px; padding-left: 2px">
+               <button [disabled]="submittingForm " type="submit" class="btn btn-success btn-sm btn-block float-right mt-3 mr-2">Salvar</button>
+              </div>
+              <div class="col-md-2" style="padding-right: 2px; padding-left: 2px">
+               <button routerLink="/usuarios" type="button" class="btn btn-danger btn-sm btn-block float-right mt-3 mr-2">Cancelar</button>                  
+              </div>
+            </div>
+         </div>         
+      </form>
+
+
+    </div>
+ </div>
+ <!-- <pre>{{usuarioForm.value | json}}</pre> -->
