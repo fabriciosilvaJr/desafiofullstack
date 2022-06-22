@@ -10,5 +10,7 @@ npm start
 acessar pelo navegador o seguinte endereço:
 http://localhost:4200/
 
-stacks usadas
-backend em nodejs e frontend em angular
+Stack utilizada
+Front-end: Angular
+
+Back-end: Node.js, Mysql
